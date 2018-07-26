@@ -14,10 +14,10 @@ public class SchematronSchemaFactory extends SchemaFactory{
 	private LSResourceResolver resourceResolver;
 	private ErrorHandler errorHandler;
 
-	private static final String SCH_15_NS = "TODO";
-	private static final String SCH_ISO_NS = "TODO";
+	private static final String SCH_15_NS = "http://www.ascc.net/xml/schematron";
+	private static final String SCH_ISO_NS = "http://purl.oclc.org/dsdl/schematron";
 	
-	private static final RuntimeException ONE_SHEMA = new UnsupportedOperationException("This implementation needs a (one) schema");
+	private static final RuntimeException ONE_SCHEMA_ONLY = new UnsupportedOperationException("This implementation needs a (one) schema");
 
 	@Override
 	public boolean isSchemaLanguageSupported(String schemaLanguage) {
@@ -52,13 +52,13 @@ public class SchematronSchemaFactory extends SchemaFactory{
 		if(schemas != null && schemas.length == 1){
 			return new SchematronSchema(schemas[0], this);
 		} else {
-			throw ONE_SHEMA;
+			throw ONE_SCHEMA_ONLY;
 		}
 	}
 
 	@Override
 	public Schema newSchema() throws SAXException {
-		throw ONE_SHEMA;
+		throw ONE_SCHEMA_ONLY;
 	}
 	
 	

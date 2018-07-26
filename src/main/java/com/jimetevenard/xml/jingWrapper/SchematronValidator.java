@@ -1,7 +1,6 @@
 package com.jimetevenard.xml.jingWrapper;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -68,6 +67,7 @@ public class SchematronValidator extends Validator {
 
 	@Override
 	public void validate(Source source, Result result) throws SAXException, IOException {
+		checkState();
 		this.validationDriver.validate(new InputSource(source.getSystemId()));
 
 	}
