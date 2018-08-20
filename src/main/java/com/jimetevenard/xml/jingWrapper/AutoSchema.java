@@ -6,12 +6,12 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 import javax.xml.validation.ValidatorHandler;
 
-public class SchematronSchema extends Schema{
+public class AutoSchema extends Schema{
 	
 	private SchemaFactory parent;
 	private Source schema;
 	
-	SchematronSchema(Source schema,SchemaFactory parent) {
+	AutoSchema(Source schema,SchemaFactory parent) {
 		super();
 		this.parent = parent;
 		this.schema = schema;
@@ -19,7 +19,7 @@ public class SchematronSchema extends Schema{
 
 	@Override
 	public Validator newValidator() {
-		return new SchematronValidator(schema, parent);
+		return new AutoSchemaValidator(schema, parent);
 	}
 
 	@Override

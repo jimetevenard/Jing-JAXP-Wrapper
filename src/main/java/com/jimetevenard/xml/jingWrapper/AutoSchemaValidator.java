@@ -21,7 +21,7 @@ import com.thaiopensource.validate.ValidateProperty;
 import com.thaiopensource.validate.ValidationDriver;
 import com.thaiopensource.validate.auto.AutoSchemaReader;
 
-public class SchematronValidator extends Validator {
+public class AutoSchemaValidator extends Validator {
 
 	private ErrorHandler errorHandler;
 	private LSResourceResolver resourceResolver;
@@ -31,7 +31,7 @@ public class SchematronValidator extends Validator {
 	private ValidationDriver validationDriver;
 	private OperationResult schemaLoading = new OperationResult();
 
-	protected SchematronValidator(Source schema, SchemaFactory parentSchemaFactory) {
+	protected AutoSchemaValidator(Source schema, SchemaFactory parentSchemaFactory) {
 		super();
 		this.schema = schema;
 		this.parentSchemaFactory = parentSchemaFactory;
