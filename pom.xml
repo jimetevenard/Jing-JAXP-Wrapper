@@ -6,8 +6,39 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     
-    
-    
+    <name>Jing JAXP Wrapper</name>
+
+    <description>JAXP Wrappers for Jing</description>
+	<url>https://github.com/jimetevenard/Jing-JAXP-Wrapper</url>
+	<developers>
+		<developer>
+			<id>jimetevenard</id>
+			<name>Jim Etevenard</name>
+			<email>jetevenard@oxiane.com</email>
+			<url>http://www.github.com/jimetevenard</url>
+			<organization>OXiane</organization>
+			<organizationUrl>http://www.oxiane.com</organizationUrl>
+			<timezone>Europe/Paris</timezone>
+		</developer>
+	</developers>
+
+	<contributors>
+
+	</contributors>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	
+	<scm>
+		<connection>scm:git:https://github.com/jimetevenard/Jing-JAXP-Wrapper.git</connection>
+		<developerConnection>scm:git:https://github.com/jimetevenard/Jing-JAXP-Wrapper.git</developerConnection>
+		<url>scm:git:https://github.com/jimetevenard/Jing-JAXP-Wrapper.git</url>
+		<tag>HEAD</tag>
+	</scm>
     
     <properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -24,11 +55,65 @@
             <scope>provided</scope>
         </dependency>
         
-        <dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.3.1</version>
-		</dependency>
+        
 
 	</dependencies>
+
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<version>1.6.7</version>
+						<extensions>true</extensions>
+						<configuration>
+							<serverId>ossrh</serverId>
+							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+							<autoReleaseAfterClose>true</autoReleaseAfterClose>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
