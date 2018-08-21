@@ -14,5 +14,11 @@ These implementations are wrappers over James Clack's [Jing](http://www.thaiopen
 ## Usage
 
 ```
-javax.xml.validationSchemaFactory.newInstance("Needed Schema namespace");
+String schemaLanguage = // One of the namespaces above...
+javax.xml.validationSchemaFactory.newInstance(schemaLanguage);
 ```
+
+
+Please note that **you'll need to add your Jing distribution as a dependency**.
+
+I put it in `provided` scope because [the only version available on Maven Central](https://mvnrepository.com/artifact/com.thaiopensource/jing/20091111) is quite outdated, so you keep the ability to build and use a [newer release](https://github.com/relaxng/jing-trang). (For ISO Schematron, this is mandatory.)
